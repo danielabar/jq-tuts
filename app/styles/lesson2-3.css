@@ -1,0 +1,23 @@
+/* base style for list items */
+/*li {
+  color: black;
+}*/
+
+/* ALL descendants */
+/*ul.emphasis li {
+
+}*/
+
+/* ONLY immediate children */
+/*ul.emphasis > li {
+  color: red;
+}*/
+
+/* general purpose class */
+/*.emphasis {
+  color: green;
+}*/
+
+.container {
+  color: blue;
+}
