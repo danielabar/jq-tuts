@@ -1,3 +1,5 @@
+'use strict';
+
 // Pass css selector to jQuery to "query" and manipulate the DOM
 
 // jQuery will append style attribute to dom elements matching 'ul li'

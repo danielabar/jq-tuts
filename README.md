@@ -8,3 +8,8 @@ Learning jQuery with Tuts Plus
 * aliased as $
 * can pass it css selectors
 * used to 'query' and manipulate DOM
+
+## Lesson 2
+* DOM is loaded top to bottom
+* Cannot use jQuery to manipulate it until after its been loaded
+* Need to tell jQuery to wait until document is ready
