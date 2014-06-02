@@ -1,0 +1,33 @@
+body {
+  margin: auto;
+  text-align: center;
+}
+
+dl {
+
+}
+
+dd {
+  margin: 0;
+  padding: 1em 0;
+}
+
+dt {
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.5em;
+  line-height: 2em;
+  background: #E3E3E3;
+  border-bottom: 1px solid #c5c5c5;
+  border-top: 1px solid white;
+}
+
+/* remove first top border, don't need step effect on first item */
+dt:first-child { border-top: none; }
+
+/* get second to last child (last-child doesn't work because its last child of its parent which would be the dd) */
+dt:nth-last-child(2) { border-bottom: none; }
+
+.hide {
+  display: none;
+}

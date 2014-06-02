@@ -34,3 +34,5 @@ Learning jQuery with Tuts Plus
   * inefficient because jQuery has to keep going back to the DOM to look for it
   * better to assign results of first wrap to variable, then use the variable reference
 * `click` is a convenience method, is equivalent to `.on('click', function...)`
+
+### Lesson 2.5 - Events 201
