@@ -2,14 +2,10 @@
 
 (function() {
 
-  // reference all the dd elements on the page
-  var dd = $('dd');
-
   // hide all the dd elements using a filter
   // only elements that match the criteria specified in filter will receive the class
-  // nth-child(n+4) means select the fourth one minimum
-  // begin at 4th child and select the rest
-  dd.filter(':nth-child(n+4)').hide();
+  // nth-child(n+4) means select the fourth one minimum begin at 4th child and select the rest
+  $('dd').filter(':nth-child(n+4)').hide();
 
 
   /* Other useful functions
@@ -22,7 +18,10 @@
   */
 
   // when user hovers over definition term, show the details that follow
-  $('dt').on('mouseenter', function() {
+  // this attaches event listener to EVERY dt element on the page, could be 100's of FAQ's
+  // would be better to attach a single event listener to parent, then determine which element was hovered over
+  // second argument 'dt' is selector string - i.e. only run the callback function if user is hovering over a dt
+  $('dl').on('mouseenter', 'dt', function() {
     $(this)
       .next()
       .slideDown(200)
