@@ -42,4 +42,15 @@
     CLASS: 'myClass4'
   }).insertBefore('p:eq(1)');
 
+  // Move existing h1 to bottom
+  $('#myPost').appendTo('article');
+
+  // Find the collection of paragraph tags, and after each, append the h1
+  $('p').after( $('h1') );
+
+  // More effective way to do above (with just first para tag)
+  // pass anon function to 'after', whatever it returns is what will be appended
+  $('p').eq(0).after(function() {
+    return $(this).prev();
+  });
 })();
