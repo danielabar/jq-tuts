@@ -12,6 +12,10 @@
 
     container: $('#contact'),
 
+    config: {
+      effect: 'slideToggle'
+    },
+
     init: function() {
       // create a button that displays the contact form
       $('<button></button>', {
@@ -24,16 +28,17 @@
 
     show: function() {
       contactForm.close.call(contactForm.container);
-      contactForm.container.show();
+      contactForm.container[contactForm.config.effect](500);
     },
 
     close: function() {
+      $('.close').remove();
       var $this = $(this); // #contact
       $('<span class="close glyphicon glyphicon-remove"></span>')
         .prependTo(this)
         .on('click', function() {
           // this = span
-          $this.hide();
+          $this[contactForm.config.effect](500);
         });
     }
 
