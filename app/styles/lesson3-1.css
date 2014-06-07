@@ -1,4 +1,18 @@
+/* Contact form */
 #contact {
   background: gainsboro;
   padding: 1em;
+  margin-top: 1em;
+}
+
+/* Close button on form */
+.close {
+  float: right;
+  cursor: pointer;
+}
+
+/* Hide the form if JavaScript is enabled */
+.js #contact {
+  top: 0;
+  display: none;
 }
