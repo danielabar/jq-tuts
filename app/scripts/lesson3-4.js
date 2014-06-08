@@ -7,18 +7,21 @@
 
   // extend core jQuery with custom 'flash' effect
   // 'this' refers to div with class of content on which function is called
-  $.fn.flash = function(speed, easing, callback) {
+  $.fn.flash = function(slideSpeed, delaySpeed) {
     var $this = $(this);
-    return $this.slideDown(500, function() {
+    var effectSpeed = slideSpeed || $.fx.speeds._default;
+    var holdSpeed = delaySpeed || $.fx.speeds._default;
+
+    return $this.slideDown(effectSpeed, function() {
       $this.addClass('attention');
-      $this.delay(2000).slideUp(500, function() {
+      $this.delay(holdSpeed).slideUp(effectSpeed, function() {
         $this.removeClass('attention');
       });
     });
   };
 
   $('h1').on('click', function() {
-    content.flash();
+    content.flash(300, 3000);
   });
 
 })();

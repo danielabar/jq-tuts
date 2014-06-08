@@ -1,9 +1,13 @@
 .pointer {
   cursor: pointer;
+  color: #645056;
+}
+
+.content {
+  background-color: #E6E2E6;
+  font-size: 2em;
 }
 
 .attention {
   color: #A60018;
-  font-size: 1.5em;
-  background-color: #E6E2E6;
 }
