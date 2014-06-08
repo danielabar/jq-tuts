@@ -13,10 +13,15 @@
     container: $('#contact'),
 
     config: {
-      effect: 'slideToggle'
+      effect: 'slideToggle',
+      speed: 500
     },
 
-    init: function() {
+    init: function(config) {
+
+      // extend base config with user supplied value
+      $.extend(this.config, config);
+
       // create a button that displays the contact form
       $('<button></button>', {
         text: 'Contact Me',
@@ -27,23 +32,41 @@
     },
 
     show: function() {
-      contactForm.close.call(contactForm.container);
-      contactForm.container[contactForm.config.effect](500);
+      var cf = contactForm,
+        container = cf.container,
+        config = cf.config;
+
+      // Check if contact form is already displayed
+      if (container.is(':hidden')) {
+        cf.close.call(container);
+        container[config.effect](config.speed);
+      }
     },
 
     close: function() {
-      $('.close').remove();
+
+      // my hack to cleanup extra elements
+      // $('.close').remove();
+
       var $this = $(this); // #contact
+
+      if ($this.find('span.close').length) {
+        return;
+      }
+
       $('<span class="close glyphicon glyphicon-remove"></span>')
         .prependTo(this)
         .on('click', function() {
           // this = span
-          $this[contactForm.config.effect](500);
+          $this[contactForm.config.effect](contactForm.config.speed);
         });
     }
 
   };
 
-  contactForm.init();
+  contactForm.init({
+    effect: 'fadeToggle',
+    speed: 300
+  });
 
 })();

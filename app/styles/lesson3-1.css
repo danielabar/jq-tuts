@@ -15,4 +15,8 @@
 .js #contact {
   top: 0;
   display: none;
+  top: 1em;
+  position: absolute;
+  width: 50%;
+  height: 55%;
 }
