@@ -6,6 +6,11 @@
     height:200px;
 }
 
+/* article */
+.articleHeader {
+  color: #5A2034;
+}
+
 /* make sidebar nav vertical */
 @media (min-width: 768px) {
   .sidebar-nav .navbar .navbar-collapse {
@@ -26,19 +31,57 @@
   }
 }
 
+#mySideNav li {
+  border-top: 1px solid #c5c5c5;
+}
+
 /* side nav colors */
 #mySideNav a {
   color: #030101;
 }
 
 #appendTextEndArticle {
-  background-color: #EA184F;
+  background-color: #E994BE;
 }
 
 #prependTextBeginArticle {
-  background-color: #8B6073;
+  background-color: #EA184F;
 }
 
 #addTextAfterArticle {
-  background-color: #CD90AE;
+  background-color: #F195BF;
+}
+
+#addTextBeforeFirstPara {
+  background-color: #ED1850;
+}
+
+#appendNewH2toArticle {
+  background-color: #E995BE;
+}
+
+#prependNewH2toArticle {
+  background-color: #EA184F;
+}
+
+#insertNewH2AfterH1 {
+  background-color: #E995BE;
+}
+
+#insertNewH2BeforeSecondPara {
+  background-color: #ED1850;
+}
+
+#moveH1toBottom {
+  background-color: #F195BF;
+}
+
+#reset {
+  background-color: #F5C128;
+}
+
+/* dynamically added */
+.standout {
+  color: #8B6073;
+  font-size: 2em;
 }
