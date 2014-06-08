@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>jq tuts</title>
+        <title>jq tuts lesson 2-7c</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -17,7 +17,7 @@
         <!-- endbuild -->
         <!-- build:css(.tmp) styles/main.css -->
         <link rel="stylesheet" href="styles/main.css">
-        <link rel="stylesheet" href="styles/lesson2.css">
+        <link id="daynight" rel="stylesheet" href="styles/lesson2-7c.css">
         <!-- endbuild -->
         <script src="bower_components/modernizr/modernizr.js"></script>
 
@@ -27,38 +27,50 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-
         <div class="container">
-            <div class="header">
-                <ul class="nav nav-pills pull-right">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-                <h3 class="text-muted">jq tuts</h3>
-            </div>
+            <div class="row">
 
-            <div class="row marketing">
-                <div class="col-lg-6">
-                    <h4><a href="lesson2-3.html">Lesson 2-3 The Basics of Querying the DOM</a></h4>
-                    <h4><a href="lesson2-4.html">Lesson 2-4 Events 101</a></h4>
-                    <h4><a href="lesson2-5.html">Lesson 2-5 Events 201</a></h4>
-                    <h4><a href="lesson2-6.html">Lesson 2-6 Bind...Live...Delegate</a></h4>
-                    <h4><a href="lesson2-7.html">Lesson 2-7 Creating and Appending Content</a></h4>
-                    <h4><a href="lesson2-7b.html">Lesson 2-7b Creating and Appending Content</a></h4>
-                    <h4><a href="lesson2-7c.html">Lesson 2-7c Creating and Appending Content Exercises</a></h4>
-                    <h4><a href="lesson3-1.html">Lesson 3-1 Slides and Structure</a></h4>
-                </div>
-            </div>
+                <div class="col-md-4">
+                    <div class="sidebar-nav">
+                      <div class="navbar navbar-default" role="navigation">
+                        <div class="navbar-header">
+                          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                          </button>
+                          <span class="visible-xs navbar-brand">Sidebar menu</span>
+                        </div>
+                        <div class="navbar-collapse collapse sidebar-navbar-collapse">
+                          <ul id="mySideNav" class="nav navbar-nav">
+                            <li id="appendTextEndArticle"><a href="#">Append text end article</a></li>
+                            <li id="prependTextBeginArticle"><a href="#">Prepend text begin article</a></li>
+                            <li id="addTextAfterArticle"><a href="#">Add text after article</a></li>
+                            <li><a href="#">Menu Item 4</a></li>
+                            <li><a href="#">Reviews <span class="badge">1,118</span></a></li>
+                          </ul>
+                        </div><!--/.nav-collapse -->
+                      </div><!--//navbar-->
+                    </div><!--//sidebar-nav-->
+                </div><!--//col-md-3-->
 
-            <ul>
-              <li>Hello</li>
-              <li>Item 1</li>
-              <li>Item 2</li>
-            </ul>
+                <div class="col-md-8">
 
-        </div>
+                  <article>
+                    <h1 id="myPost">My Awesome Post</h1>
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      Ipsum, quas, aperiam, aliquid, amet nam beatae veniam ducimus neque quisquam repudiandae ab enim hic harum dignissimos at placeat maiores cupiditate! Consectetur.
+                    </p>
+                    <p>
+                      <span class="callout">Lorem ipsum dolor sit amet</span> consectetur adipisicing elit. Ipsum, quas, aperiam, aliquid, amet nam beatae veniam ducimus neque quisquam repudiandae ab enim hic harum dignissimos at placeat maiores cupiditate! Consectetur.
+                    </p>
+                  </article>
+                </div><!--//col-md-9-->
 
+            </div><!--//row-->
+        </div><!--//container-->
 
         <!-- build:js scripts/vendor.js -->
         <!-- bower:js -->
@@ -93,7 +105,7 @@
 
         <!-- build:js({app,.tmp}) scripts/main.js -->
         <script src="scripts/main.js"></script>
-        <script src="scripts/lesson2.js"></script>
+        <script src="scripts/lesson2-7c.js"></script>
         <!-- endbuild -->
 </body>
 </html>

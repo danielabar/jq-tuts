@@ -1,0 +1,36 @@
+/* make sidebar nav vertical */
+@media (min-width: 768px) {
+  .sidebar-nav .navbar .navbar-collapse {
+    padding: 0;
+    max-height: none;
+  }
+  .sidebar-nav .navbar ul {
+    float: none;
+    display: block;
+  }
+  .sidebar-nav .navbar li {
+    float: none;
+    display: block;
+  }
+  .sidebar-nav .navbar li a {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+}
+
+/* side nav */
+#mySideNav a {
+  color: #030101;
+}
+
+#appendTextEndArticle {
+  background-color: #EA184F;
+}
+
+#prependTextBeginArticle {
+  background-color: #8B6073;
+}
+
+#addTextAfterArticle {
+  background-color: #CD90AE;
+}
