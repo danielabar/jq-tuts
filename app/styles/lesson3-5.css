@@ -9,10 +9,11 @@
 
 .circle {
   border-radius: 50%;
+  color: #FFF;
   width: 400px;
   height: 400px;
   padding-top: 100px;
-  -webkit-transition: border-radius 1s, width 1s, height 1s, padding-top 1s;
+  -webkit-transition: border-radius 1s, width 1s, height 1s, padding-top 1s, color 1s;
 }
 
 /* http://twitterbootstrap3buttons.w3masters.nl/?color=%23c772b9 */
