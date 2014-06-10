@@ -24,6 +24,13 @@
     });
   });
 
+  // // OLD SCHOOL: increase font size on button click
+  // $('button').on('click', function() {
+  //   // get the font size (string) and convert to number
+  //   var fontSize = parseInt(box.css('font-size'), 10);
+  //   box.css('font-size', fontSize + 5);
+  // });
+
   // Note: animate does not have ability to animate color
   // Use css3 or jQuery color plugin to achieve that
   // $('button#animate').on('click', function() {
@@ -52,15 +59,35 @@
       step: function(fontSize) {
         // step function is called for every iteration of the animation
         fontSizeDisplay.text(fontSize);
+        // 'this' is element being manipulated
+        console.log('The current font size is: ' + $(this).css('fontSize'));
       }
     });
   });
 
-  // // OLD SCHOOL: increase font size on button click
-  // $('button').on('click', function() {
-  //   // get the font size (string) and convert to number
-  //   var fontSize = parseInt(box.css('font-size'), 10);
-  //   box.css('font-size', fontSize + 5);
-  // });
+  // Animations can be chained
+  // By default, second will wait for first to complete
+  // set 'queue' to false if all animations should happen at the SAME time
+  $('button#animate2').on('click', function() {
+    box
+      .animate({'fontSize': '+=5'}, {duration: 500 })
+      .animate({'top': 500}, {duration: 3000, queue: false});
+  });
+
+  // use outerWidth/Height so jQuery will take margin/padding into account
+  $('button#centerbox').on('click', function() {
+    var winWidth = ($(window).width() / 2) - (box.outerWidth() / 2);
+    var winHeight = ($(window).height() / 2) - (box.outerHeight() / 2);
+    box
+      .css({'position': 'absolute'})
+      .animate({'top': winHeight}, {duration: 1000})
+      .animate({'left': winWidth}, {duration: 1000, queue: false});
+  });
+
+  // always more performant to animate with css
+  $('button#circle').on('click', function() {
+    box.addClass('circle');
+  });
+
 
 })();
