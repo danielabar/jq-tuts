@@ -44,20 +44,27 @@
   });
 
   // Homework: extend core jQuery with fadeSlideToggle
-  $.fn.fadeSlideToggle = function(duration) {
+  $.fn.fadeSlideToggle = function(duration, callback) {
     var $this = $(this);
-    var effectSpeed = duration || $.fx.speeds._default;
     return $this.animate({
       'opacity': 'toggle',
       'height': 'toggle'
     }, {
-      duration: effectSpeed
+      duration: duration || $.fx.speeds._default,
+      complete: $.isFunction(callback) && callback.bind(this)
     });
   };
 
-  // Homework: Use the custom func in a click handler
+  var testCb = function() {
+    console.log('all done');
+    console.log(this);
+  };
+
+  // Homework: Use the custom func in a click handler, it should be chainable
   $('button#homework').on('click', function() {
-    box.fadeSlideToggle(2000);
+    box
+      .fadeSlideToggle(2000, testCb)
+      .addClass('testing');
   });
 
 })();
