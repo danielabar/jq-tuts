@@ -1,0 +1,77 @@
+.box {
+  background: #EC90AA;
+  padding: 1em;
+  margin-bottom: 1em;
+  margin-top: 1em;
+  border-radius: .5em;
+  position: relative;
+}
+
+.circle {
+  border-radius: 50%;
+  color: #FFF;
+  width: 400px;
+  height: 400px;
+  padding-top: 100px;
+  -webkit-transition: border-radius 1s, width 1s, height 1s, padding-top 1s, color 1s;
+}
+
+/* http://twitterbootstrap3buttons.w3masters.nl/?color=%23c772b9 */
+.btn-purple {
+  color: #FFF;
+  background-color: #c772b9;
+  border-color: #c772b9;
+}
+.btn-purple:hover,
+.btn-purple:focus,
+.btn-purple:active,
+.btn-purple.active {
+  color: #FFF;
+  background-color: #c060b0;
+  border-color: #b94da7;
+}
+.btn-purple.disabled:hover,
+.btn-purple.disabled:focus,
+.btn-purple.disabled:active,
+.btn-purple.disabled.active,
+.btn-purple[disabled]:hover,
+.btn-purple[disabled]:focus,
+.btn-purple[disabled]:active,
+.btn-purple[disabled].active,
+fieldset[disabled] .btn-purple:hover,
+fieldset[disabled] .btn-purple:focus,
+fieldset[disabled] .btn-purple:active,
+fieldset[disabled] .btn-purple.active {
+  background-color: #c772b9;
+  border-color: #c772b9;
+}
+
+/* http://twitterbootstrap3buttons.w3masters.nl/?color=%233b74e3 */
+.btn-blue {
+  color: #FFF;
+  background-color: #3b74e3;
+  border-color: #3b74e3;
+}
+.btn-blue:hover,
+.btn-blue:focus,
+.btn-blue:active,
+.btn-blue.active {
+  color: #FFF;
+  background-color: #2564e0;
+  border-color: #1d59ce;
+}
+.btn-blue.disabled:hover,
+.btn-blue.disabled:focus,
+.btn-blue.disabled:active,
+.btn-blue.disabled.active,
+.btn-blue[disabled]:hover,
+.btn-blue[disabled]:focus,
+.btn-blue[disabled]:active,
+.btn-blue[disabled].active,
+fieldset[disabled] .btn-blue:hover,
+fieldset[disabled] .btn-blue:focus,
+fieldset[disabled] .btn-blue:active,
+fieldset[disabled] .btn-blue.active {
+  background-color: #3b74e3;
+  border-color: #3b74e3;
+}
