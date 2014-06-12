@@ -31,16 +31,21 @@
 
           <h3 class="text-muted">The Obligatory Slider</h3>
 
-          <div class="jumbotron">
-            <img src="images/slider/snoopy1.png" alt="Snoopy at the beach" class="img-responsive">
+          <div class="slider">
+            <ul>
+              <li><img class="img-rounded image-responsive" src="images/slider/snoopy1.png" alt="Snoopy 1"></li>
+              <li><img class="img-rounded image-responsive" src="images/slider/snoopy2.png" alt="Snoopy 2"></li>
+              <li><img class="img-rounded image-responsive" src="images/slider/snoopy3.png" alt="Snoopy 3"></li>
+              <li><img class="img-rounded image-responsive" src="images/slider/snoopy4.png" alt="Snoopy 4"></li>
+            </ul>
           </div>
 
-          <div class="row marketing">
-            <div class="col-lg-7">
-              <a id="next" href="#" class="btn btn-lg btn-primary">Next <span class="glyphicon glyphicon-chevron-right"></span></a>
+          <div id="slider-nav" class="row marketing">
+            <div class="col-lg-6">
+              <a data-dir="prev" href="#" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-chevron-left"></span> Prev</a>
             </div>
-            <div class="col-lg-5 pull-right">
-              <a id="prev" href="#" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-chevron-left"></span> Prev</a>
+            <div class="col-lg-6 pull-right">
+              <a data-dir="next" href="#" class="btn btn-lg btn-primary">Next <span class="glyphicon glyphicon-chevron-right"></span></a>
             </div>
           </div>
 

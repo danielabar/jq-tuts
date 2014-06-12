@@ -4,3 +4,18 @@
   padding-left: 0px;
   background-color: #FFF;
 }
+
+.slider {
+  width: 611px;
+  height: 600px;
+  overflow: hidden;
+}
+
+.slider ul {
+  width: 10000px;
+  list-style-type: none;
+}
+
+.slider li {
+  float: left
+}
