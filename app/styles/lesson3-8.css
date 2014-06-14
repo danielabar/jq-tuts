@@ -1,0 +1,22 @@
+.myslider .jumbotron {
+  margin-bottom: 20px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  background-color: #FFF;
+}
+
+.slider {
+  width: 611px;
+  height: 600px;
+  overflow: hidden;
+}
+
+/* Make this insanely wide because .slider has overflow */
+.slider ul {
+  width: 10000px;
+  list-style-type: none;
+}
+
+.slider li {
+  float: left
+}

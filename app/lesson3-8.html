@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>jq tuts</title>
+        <title>jq tuts lesson 3-7 slider</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -17,7 +17,7 @@
         <!-- endbuild -->
         <!-- build:css(.tmp) styles/main.css -->
         <link rel="stylesheet" href="styles/main.css">
-        <link rel="stylesheet" href="styles/lesson2.css">
+        <link rel="stylesheet" href="styles/lesson3-8.css">
         <!-- endbuild -->
         <script src="bower_components/modernizr/modernizr.js"></script>
 
@@ -27,45 +27,30 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
+        <div class="container myslider">
 
-        <div class="container">
-            <div class="header">
-                <ul class="nav nav-pills pull-right">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-                <h3 class="text-muted">jq tuts</h3>
-            </div>
+          <h3 class="text-muted">The Obligatory Slider</h3>
 
-            <div class="row marketing">
-                <div class="col-lg-9">
-                    <h4><a href="lesson2-3.html">Lesson 2-3 The Basics of Querying the DOM</a></h4>
-                    <h4><a href="lesson2-4.html">Lesson 2-4 Events 101</a></h4>
-                    <h4><a href="lesson2-5.html">Lesson 2-5 Events 201</a></h4>
-                    <h4><a href="lesson2-6.html">Lesson 2-6 Bind...Live...Delegate</a></h4>
-                    <h4><a href="lesson2-7.html">Lesson 2-7 Creating and Appending Content</a></h4>
-                    <h4><a href="lesson2-7b.html">Lesson 2-7b Creating and Appending Content</a></h4>
-                    <h4><a href="lesson2-7c.html">Lesson 2-7c Creating and Appending Content Exercises</a></h4>
-                    <h4><a href="lesson3-1.html">Lesson 3-1 Slides and Structure</a></h4>
-                    <h4><a href="lesson3-2.html">Lesson 3-2 The this keyword</a></h4>
-                    <h4><a href="lesson3-3.html">Lesson 3-3 Modifying Effect Speeds</a></h4>
-                    <h4><a href="lesson3-4.html">Lesson 3-4 Creating Custom Effect Methods</a></h4>
-                    <h4><a href="lesson3-5.html">Lesson 3-5 Full Control with Animate</a></h4>
-                    <h4><a href="homework.html">Homework - Fade Slide Toggle</a></h4>
-                    <h4><a href="lesson3-7.html">Lesson 3-7 Slider (First Attempt)</a></h4>
-                    <h4><a href="lesson3-8.html">Lesson 3-8 Refactor Slider (Prototypal Inheritance)</a></h4>
-                </div>
-            </div>
-
+          <div class="slider">
             <ul>
-              <li>Hello</li>
-              <li>Item 1</li>
-              <li>Item 2</li>
+              <li><img class="img-rounded image-responsive" src="images/slider/snoopy1.png" alt="Snoopy 1"></li>
+              <li><img class="img-rounded image-responsive" src="images/slider/snoopy2.png" alt="Snoopy 2"></li>
+              <li><img class="img-rounded image-responsive" src="images/slider/snoopy3.png" alt="Snoopy 3"></li>
+              <li><img class="img-rounded image-responsive" src="images/slider/snoopy4.png" alt="Snoopy 4"></li>
+              <li><img class="img-rounded image-responsive" src="images/slider/snoopy5.jpg" alt="Snoopy 5"></li>
             </ul>
+          </div>
 
-        </div>
+          <div id="slider-nav" class="row marketing">
+            <div class="col-lg-6">
+              <a data-dir="prev" href="#" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-chevron-left"></span> Prev</a>
+            </div>
+            <div class="col-lg-6 pull-right">
+              <a data-dir="next" href="#" class="btn btn-lg btn-primary">Next <span class="glyphicon glyphicon-chevron-right"></span></a>
+            </div>
+          </div>
 
+        </div><!--//container-->
 
         <!-- build:js scripts/vendor.js -->
         <!-- bower:js -->
@@ -100,7 +85,8 @@
 
         <!-- build:js({app,.tmp}) scripts/main.js -->
         <script src="scripts/main.js"></script>
-        <script src="scripts/lesson2.js"></script>
+        <script src="scripts/slider3-8.js"></script>
+        <script src="scripts/lesson3-8.js"></script>
         <!-- endbuild -->
 </body>
 </html>
