@@ -16,28 +16,38 @@
     var direction = $(this).data('dir');
     var loc = imgWidth;
 
-    (direction === 'next') ? current += 1 : current -=1
+    // update current value
+    if (direction === 'next') {
+      current += 1;
+    } else {
+      current -=1;
+    }
 
     // if first image
     if (current === 0) {
       current = imgsLen;
-      direction === 'next'
-    } else if (current - 1 === imgsLen) {
-      // if last image'
+      loc = totalImgsWidth - imgWidth;
+      direction = 'next';
+    } else if ((current - 1) === imgsLen) { // Are we at end? Should we reset?
       current = 1;
-      direction === 'prev';
+      loc = 0;
     }
 
-    transition(sliderUL, '', direction);
+    transition(sliderUL, loc, direction);
     e.preventDefault();
 
 
   });
 
   // adjust container's margin left
+  // loc is where we're headed: 600 or 0
   var transition = function(container, loc, direction) {
+    var unit; // will either be -= or +=
+    if (direction && loc !== 0) {
+      unit = ( direction === 'next') ? '-=' : '+=';
+    }
     container.animate({
-      'margin-left': '-=600'
+      'margin-left': unit ? (unit + loc) : loc
     }, {
       'duration': 500
     });
