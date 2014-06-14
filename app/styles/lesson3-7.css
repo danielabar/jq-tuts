@@ -11,6 +11,7 @@
   overflow: hidden;
 }
 
+/* Make this insanely wide because .slider has overflow */
 .slider ul {
   width: 10000px;
   list-style-type: none;
