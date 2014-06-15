@@ -35,17 +35,28 @@
           <ul class="tweets">
 
             <!-- A handlebars template -->
-            <!-- Use 3 curly braces if want handlebars to render html in tags rather than escape it -->
             <script id="template" type="text/x-handlebars-template">
               {{#each this}}
                 <li>
-                  <!-- only show the age if its available -->
-                  <h3>{{author}}
+                  <h3>
+
+                    <!-- Use helper function to display author object -->
+                    {{fullName author}}
+
+                    <!-- only show the age if its available -->
                     {{#if age}}
                        - <span>{{age}}</span>
                     {{/if}}
+
                   </h3>
+
+                  <!-- Use 3 curly braces if want handlebars to render html in tags rather than escape it -->
                   <p>{{{tweet}}}</p>
+
+                  <!-- 'unless' === 'if not' -->
+                  {{#unless quote}}
+                    <h5>Author does not have a quote</h5>
+                  {{/unless}}
                 </li>
               {{/each}}
             </script>
