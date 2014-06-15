@@ -36,4 +36,5 @@ Learning jQuery with Tuts Plus
   * better to assign results of first wrap to variable, then use the variable reference
 * `click` is a convenience method, is equivalent to `.on('click', function...)`
 
-Left 9:04 lesson 3.7
+Instead of twitter api, try guardian, for example:
+http://content.guardianapis.com/search?q=fifa&show-fields=thumbnail
