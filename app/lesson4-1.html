@@ -33,10 +33,29 @@
 
           <!-- A custom template -->
           <script id="blogTemplate" type="tuts/template">
-            <h2> {{title}} </h2>
-            <img src={{thumbail}} alt={{title}}>
+            <h2>{{title}}</h2>
+            <img class="img-rounded image-responsive" src="{{thumbnail}}" alt="{{title}}">
           </script>
 
+          <script id="feedTemplate" type="rss/feedTemplate">
+            <h2>{{title}}</h2>
+            <p>
+              {{contentSnippet}}
+              <a href="{{link}}">Full article</a>
+            </p>
+          </script>
+
+          <div class="row">
+
+            <div class="col-md-8">
+              <div class="posts"></div>
+            </div>
+
+            <div class="col-md-4">
+              <div class="feeds"></div>
+            </div>
+
+          </div><!--//row-->
         </div><!--//container-->
 
         <!-- build:js scripts/vendor.js -->
@@ -69,6 +88,10 @@
         <script src="bower_components/bootstrap/js/collapse.js"></script>
         <script src="bower_components/bootstrap/js/tab.js"></script>
         <!-- endbuild -->
+
+        <!-- Experiment with google library for loading RSS feeds -->
+        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+        <script type="text/javascript">google.load("feeds", "1");</script>
 
         <!-- build:js({app,.tmp}) scripts/main.js -->
         <script src="scripts/main.js"></script>
