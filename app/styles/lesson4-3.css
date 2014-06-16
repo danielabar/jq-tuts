@@ -3,5 +3,7 @@ ul.newsItems {
 }
 
 .newsItem {
-  border-bottom: 1px solid #c5c5c5;
+  margin-top: .1em;
+  margin-bottom: 1.5em;
+  /*border-bottom: 1px solid #c5c5c5;*/
 }

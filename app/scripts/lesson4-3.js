@@ -9,6 +9,7 @@
     init: function(config) {
       this.url = 'http://content.guardianapis.com/search?show-fields=all&q=fifa&callback=?';
       this.template = config.template;
+      this.container = config.container;
       this.fetch(this.processResults);
     },
 
@@ -16,7 +17,7 @@
       var self = this;
       $.getJSON(this.url, function(data) {
         self.items = self.extractItems(data);
-        callback(self.items, self.template);
+        callback(self.items, self.template, self.container);
       });
     },
 
@@ -35,15 +36,16 @@
       };
     },
 
-    processResults: function(context, template) {
-      var compiledTemplate = Handlebars.compile(template.html());
-      $('ul.newsItems').append(compiledTemplate(context));
+    processResults: function(context, template, container) {
+      var compiledTemplate = Handlebars.compile(template);
+      container.append(compiledTemplate(context));
     }
 
   };
 
   Guardian.init({
-    template: $('#template')
+    template: $('#template').html(),
+    container: $('ul.newsItems')
   });
 
 })();
