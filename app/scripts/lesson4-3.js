@@ -7,7 +7,8 @@
     // config object specifies where in the DOM the template is
     // good practice, to avoid having the JS dependent on DOM structure
     init: function(config) {
-      this.url = 'http://content.guardianapis.com/search?show-fields=all&q=fifa&callback=?';
+      this.q = config.query;
+      this.url = 'http://content.guardianapis.com/search?show-fields=all&q=' + this.q + '&callback=?';
       this.template = config.template;
       this.container = config.container;
       this.fetch(this.processResults);
@@ -45,7 +46,8 @@
 
   Guardian.init({
     template: $('#template').html(),
-    container: $('ul.newsItems')
+    container: $('ul.newsItems'),
+    query: 'fifa'
   });
 
 })();
