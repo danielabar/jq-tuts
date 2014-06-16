@@ -18,10 +18,7 @@
     },
 
     extractItems: function(data) {
-      var self = this;
-      return $.map(data.response.results, function(item) {
-        return self.extractItem(item);
-      });
+      return $.map(data.response.results, this.extractItem);
     },
 
     extractItem: function(item) {
@@ -35,8 +32,9 @@
       };
     },
 
-    processResults: function(items) {
-      console.log('processResults is called with items: ' + JSON.stringify(items, null, 2));
+    processResults: function(context) {
+      var template = Handlebars.compile($('#template').html());
+      $('ul.newsItems').append(template(context));
     }
 
   };

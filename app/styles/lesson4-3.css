@@ -1,0 +1,7 @@
+ul.newsItems {
+  list-style-type: none;
+}
+
+.newsItem {
+  border-bottom: 1px solid #c5c5c5;
+}
