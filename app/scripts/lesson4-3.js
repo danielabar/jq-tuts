@@ -16,7 +16,7 @@
       var self = this;
       $.getJSON(this.url, function(data) {
         self.items = self.extractItems(data);
-        callback(self.items);
+        callback(self.items, self.template);
       });
     },
 
@@ -35,13 +35,15 @@
       };
     },
 
-    processResults: function(context) {
-      var template = Handlebars.compile($('#template').html());
-      $('ul.newsItems').append(template(context));
+    processResults: function(context, template) {
+      var compiledTemplate = Handlebars.compile(template.html());
+      $('ul.newsItems').append(compiledTemplate(context));
     }
 
   };
 
-  Guardian.init({});
+  Guardian.init({
+    template: $('#template')
+  });
 
 })();
