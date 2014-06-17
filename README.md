@@ -38,3 +38,8 @@ Learning jQuery with Tuts Plus
 
 Instead of twitter api, try guardian, for example:
 http://content.guardianapis.com/search?q=fifa&show-fields=thumbnail
+
+### Lesson 5-1 - Custom Events
+* trigger === publish
+* on === subscribe
+* pub/sub === The Observer Pattern

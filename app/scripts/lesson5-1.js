@@ -23,15 +23,23 @@
   $('body').trigger('app/clickityClack');
 
   // another usage of custom events is for async handling
-  $(document).on('news/results', function(e, data) {
-    console.log('news results are available');
-    console.log(data);
-  });
-
   $.getJSON('http://content.guardianapis.com/search?show-fields=all&q=fifa&callback=?', function(data) {
     // do any processing you want
     // announce to app that data is available
     $(document).trigger('news/results', data);
+  });
+
+  $(document).on('news/results', function(e, data) {
+    console.dir(e);
+    console.log('news results are available');
+    console.log(data);
+  });
+
+  // Can have multiple handlers that respond to custom event
+  $(document).on('news/results', function(e, data) {
+    console.dir(e);
+    console.log('news results are available - another handler');
+    console.log(data);
   });
 
 })();
