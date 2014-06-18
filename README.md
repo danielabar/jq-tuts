@@ -43,3 +43,11 @@ http://content.guardianapis.com/search?q=fifa&show-fields=thumbnail
 * trigger === publish
 * on === subscribe
 * pub/sub === The Observer Pattern
+
+### Lesson 6-1 - Loading Pages Asynchronously
+* see jQuery API doc on [ajax short-hand methods](http://api.jquery.com/category/ajax/shorthand-methods/)
+  * load
+  * getJSON
+  * get
+  * post
+  * getScript
