@@ -19,9 +19,22 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
+// in-memory store of user content
+var contents = [];
+
+app.get('/content', function(req, res) {
+  var result;
+  if (contents.length === 0) {
+    result = '';
+  } else {
+    result = contents[contents.length-1];
+  }
+  res.json(200, {message: result});
+});
+
 app.post('/content', function(req, res) {
-  content = req.body.content;
-  console.log('User posted content: ' + content);
+  contents.push(req.body.content);
+  console.log(JSON.stringify(contents));
   res.json(200, {message: 'saved'});
 });
 
