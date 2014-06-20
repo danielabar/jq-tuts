@@ -1,6 +1,7 @@
 var express = require('express');
 var http = require('http');
 var path = require('path');
+var validator = require('validator');
 
 var app = express();
 
@@ -23,18 +24,12 @@ if ('development' == app.get('env')) {
 var contents = [];
 
 app.get('/content', function(req, res) {
-  var result;
-  if (contents.length === 0) {
-    result = '';
-  } else {
-    result = contents[contents.length-1];
-  }
+  var result = contents.length === 0 ? '' : contents[contents.length-1];
   res.json(200, {message: result});
 });
 
 app.post('/content', function(req, res) {
-  contents.push(req.body.content);
-  console.log(JSON.stringify(contents));
+  contents.push(validator.escape(req.body.content));
   res.json(200, {message: 'saved'});
 });
 
