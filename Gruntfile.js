@@ -50,7 +50,7 @@ module.exports = function(grunt) {
     // Watches files for changes and runs tasks based on the changed files
     watch: {
       js: {
-        files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
+        files: ['<%= yeoman.app %>/scripts/{,*/}*.js', 'server/server.js'],
         tasks: ['jshint'],
         options: {
           livereload: true
@@ -76,6 +76,16 @@ module.exports = function(grunt) {
           '.tmp/styles/{,*/}*.css',
           '<%= yeoman.app %>/images/{,*/}*.{gif,jpeg,jpg,png,svg,webp}'
         ]
+      },
+      express: {
+        files: [
+          'server/server.js'
+        ],
+        tasks: ['express:dev'],
+        options: {
+          livereload: true,
+          nospawn: true
+        }
       }
     },
 

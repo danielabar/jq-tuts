@@ -20,6 +20,8 @@ if ('development' == app.get('env')) {
 }
 
 app.post('/content', function(req, res) {
+  content = req.body.content;
+  console.log('User posted content: ' + content);
   res.json(200, {message: 'saved'});
 });
 
