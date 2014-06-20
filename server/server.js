@@ -2,6 +2,12 @@ var express = require('express');
 var http = require('http');
 var path = require('path');
 var validator = require('validator');
+var mysql      = require('mysql');
+var connection = mysql.createConnection({
+  host     : 'localhost',
+  user     : 'root',
+  database : 'sakila'
+});
 
 var app = express();
 
@@ -31,6 +37,16 @@ app.get('/content', function(req, res) {
 app.post('/content', function(req, res) {
   contents.push(validator.escape(req.body.content));
   res.json(200, {message: 'saved'});
+});
+
+// just testing that the db connection works
+app.get('/actor', function(req, res) {
+  connection.connect();
+  connection.query('SELECT first_name, last_name from actor', function(err, rows, fields) {
+    if (err) throw err;
+    res.json(200, {response: rows});
+  });
+  connection.end();
 });
 
 var port = process.env.PORT || 3000;
