@@ -5,7 +5,7 @@
   // When the page loads, display the last saved user content from the server
   $.get('/content', function(response) {
     $('#content').text(response.message);
-  })
+  });
 
   $('form').on('submit', function(e) {
     var data = $(this).serialize(); //content=hello

@@ -41,12 +41,10 @@ app.post('/content', function(req, res) {
 
 // just testing that the db connection works
 app.get('/actor', function(req, res) {
-  connection.connect();
-  connection.query('SELECT first_name, last_name from actor', function(err, rows, fields) {
+  connection.query('SELECT actor_id, first_name, last_name from actor', function(err, rows, fields) {
     if (err) throw err;
     res.json(200, {response: rows});
   });
-  connection.end();
 });
 
 var port = process.env.PORT || 3000;
