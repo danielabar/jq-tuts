@@ -61,6 +61,27 @@
             </fieldset>
           </form>
 
+          <div class="search-results">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                </tr>
+              </thead>
+              <tbody>
+                <script type="text/x-handlebars-template" id="resultsTpl">
+                  {{#each actors}}
+                    <tr>
+                      <td>{{first_name}}</td>
+                      <td>{{last_name}}</td>
+                    </tr>
+                  {{/each}}
+                </script>
+              </tbody>
+            </table>
+          </div>
+
 
         </div><!--//container-->
 

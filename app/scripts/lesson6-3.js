@@ -8,6 +8,9 @@
       this.optionsTemplate = config.optionsTemplate;
       this.optionsContainer = config.optionsContainer;
       this.searchElement = config.searchElement;
+      this.resultsContainer = config.resultsContainer;
+      this.resultsTemplate = config.resultsTemplate;
+      this.resultsContainer.hide();
       this.initSearchOptions();
       this.registerSearchHandler();
     },
@@ -42,8 +45,8 @@
         url: '/actor/' + q,
         type: 'GET',
         dataType: 'JSON',
-        success: function(response) {
-          self.displaySearchResults(response);
+        success: function(data) {
+          self.displaySearchResults(data, self);
         },
         error: function(error) {
           self.displayError(error);
@@ -51,8 +54,12 @@
       });
     },
 
-    displaySearchResults: function(response) {
-      console.log(response);
+    displaySearchResults: function(data, self) {
+      self.resultsContainer.empty();
+      var compiledTemplate = Handlebars.compile(self.resultsTemplate);
+      var wrapper  = {actors: data.response};
+      self.resultsContainer.append(compiledTemplate(wrapper));
+      self.resultsContainer.show();
     },
 
     displayError: function(error) {
@@ -64,7 +71,9 @@
   ActorService.init({
     optionsTemplate: $('#qOptionsTpl').html(),
     optionsContainer: $('select#q'),
-    searchElement: $('button#search')
+    searchElement: $('button#search'),
+    resultsContainer: $('.search-results tbody'),
+    resultsTemplate: $('#resultsTpl').html()
   });
 
 
