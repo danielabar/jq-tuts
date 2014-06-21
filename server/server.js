@@ -39,11 +39,18 @@ app.post('/content', function(req, res) {
   res.json(200, {message: 'saved'});
 });
 
-// just testing that the db connection works
 app.get('/actor', function(req, res) {
   connection.query('SELECT actor_id, first_name, last_name from actor', function(err, rows, fields) {
     if (err) throw err;
     res.json(200, {response: rows});
+  });
+});
+
+app.get('/actor/:firstLetterOfLastName', function(req, res) {
+  var q = validator.escape(req.params.firstLetterOfLastName) + '%';
+  connection.query('SELECT actor_id, first_name, last_name FROM actor WHERE last_name LIKE ? ORDER BY last_name', [q], function(err, results) {
+    if (err) throw err;
+    res.json(200, {response: results});
   });
 });
 
