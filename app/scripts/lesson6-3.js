@@ -57,13 +57,25 @@
     displaySearchResults: function(data, self) {
       self.resultsContainer.empty();
       var compiledTemplate = Handlebars.compile(self.resultsTemplate);
-      var wrapper  = {actors: data.response};
-      self.resultsContainer.append(compiledTemplate(wrapper));
+      self.resultsContainer.append(compiledTemplate({actors: data.response}));
       self.resultsContainer.show();
+      self.registerActorDetailModalHandler();
     },
 
     displayError: function(error) {
       console.log(error);
+    },
+
+    registerActorDetailModalHandler: function() {
+      var self = this;
+      $('a.openActorModal').on('click', function() {
+        var actorId = $(this).data('actorId');
+        self.getActorDetails(actorId);
+      });
+    },
+
+    getActorDetails: function(actorId) {
+      console.log('getting details for actorId: ' + actorId);
     }
 
   };

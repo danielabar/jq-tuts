@@ -73,7 +73,7 @@
                 <script type="text/x-handlebars-template" id="resultsTpl">
                   {{#each actors}}
                     <tr>
-                      <td><a href="#" data-actor-id="{{actor_id}}" data-toggle="modal" data-target="#actorDetailModal">{{first_name}}</a></td>
+                      <td><a href="#" data-actor-id="{{actor_id}}" data-toggle="modal" data-target="#actorDetailModal" class="openActorModal">{{first_name}}</a></td>
                       <td>{{last_name}}</td>
                     </tr>
                   {{/each}}
@@ -96,11 +96,10 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
               </div>
             </div>
           </div>
-        </div>
+        </div><!--//actorDetailModal-->
 
         <!-- build:js scripts/vendor.js -->
         <!-- bower:js -->
