@@ -2,6 +2,7 @@ var express = require('express');
 var http = require('http');
 var path = require('path');
 var validator = require('validator');
+var _ = require('underscore');
 var mysql      = require('mysql');
 var connection = mysql.createConnection({
   host     : 'localhost',
@@ -41,7 +42,7 @@ app.post('/content', function(req, res) {
 
 app.get('/actor', function(req, res) {
   connection.query('SELECT actor_id, first_name, last_name from actor', function(err, rows, fields) {
-    if (err) throw err;
+    if (err) res.send(500, err);
     res.json(200, {response: rows});
   });
 });
@@ -49,7 +50,18 @@ app.get('/actor', function(req, res) {
 app.get('/actor/:firstLetterOfLastName', function(req, res) {
   var q = validator.escape(req.params.firstLetterOfLastName) + '%';
   connection.query('SELECT actor_id, first_name, last_name FROM actor WHERE last_name LIKE ? ORDER BY last_name', [q], function(err, results) {
-    if (err) throw err;
+    if (err) res.send(500, err);
+    var resultsWithLink = results.map(function(item) {
+      return _.extend(item, {link: '/actordetail/' + item.actor_id});
+    });
+    res.json(200, {response: resultsWithLink});
+  });
+});
+
+app.get('/actordetail/:id', function(req, res) {
+  var actorId = validator.toInt(req.params.id, 10);
+  connection.query('SELECT actor_id, first_name, last_name, film_info from actor_info where actor_id = ?', actorId, function(err, results) {
+    if (err) res.send(500, err);
     res.json(200, {response: results});
   });
 });
