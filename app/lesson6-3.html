@@ -80,23 +80,28 @@
                 </script>
               </tbody>
             </table>
-          </div>
+          </div><!--//search-results-->
 
         </div><!--//container-->
 
         <div class="modal fade" id="actorDetailModal" tabindex="-1" role="dialog" aria-labelledby="actorDetailModal" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&amp;times;</button>
-                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-              </div>
-              <div class="modal-body">
-                <h3>Modal Body</h3>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              </div>
+              <script type="text/x-handlebars-template" id="detailsTpl">
+                <div class="detailContainer">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&amp;times;</button>
+                    <h4 class="modal-title" id="myModalLabel">{{first_name}}&nbsp;{{last_name}}</h4>
+                  </div>
+                  <div class="modal-body">
+                    <h3>Film Info</h3>
+                    <p>{{film_info}}</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </script>
             </div>
           </div>
         </div><!--//actorDetailModal-->

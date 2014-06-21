@@ -70,12 +70,28 @@
       var self = this;
       $('a.openActorModal').on('click', function() {
         var actorId = $(this).data('actorId');
-        self.getActorDetails(actorId);
+        self.getActorDetails(actorId, self);
       });
     },
 
-    getActorDetails: function(actorId) {
-      console.log('getting details for actorId: ' + actorId);
+    getActorDetails: function(actorId, self) {
+      $.ajax({
+        url: '/actordetail/' + actorId,
+        type: 'GET',
+        dataType: 'JSON',
+        success: function(data) {
+          self.displayActorDetails(data.response[0], self);
+        },
+        error: function(error) {
+          self.displayError(error);
+        }
+      });
+    },
+
+    displayActorDetails: function(data, self) {
+      $('#actorDetailModal .detailContainer').empty();
+      var compiledTemplate = Handlebars.compile($('#detailsTpl').html());
+      $('#actorDetailModal .modal-content').append(compiledTemplate(data));
     }
 
   };
