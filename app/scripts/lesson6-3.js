@@ -2,25 +2,36 @@
 
 (function() {
 
-  var buildSearchOptions = function() {
-    var template = $('#qOptionsTpl').html();
-    var compiledTemplate = Handlebars.compile(template);
-    var context = buildAlphabet();
-    var container = $('select#q');
-    container.append(compiledTemplate(context));
-  };
+  var ActorService = {
 
-  var buildAlphabet = function() {
-    var l = [];
-    for (var i=65; i<=90; i++){
-      l.push({
-        value: String.fromCharCode(i),
-        displayValue: String.fromCharCode(i)
-      });
+    init: function(config) {
+      this.optionsTemplate = config.optionsTemplate;
+      this.optionsContainer = config.optionsContainer;
+      this.initSearchOptions();
+    },
+
+    initSearchOptions: function() {
+      var compiledTemplate = Handlebars.compile(this.optionsTemplate);
+      this.optionsContainer.append(compiledTemplate(this.generateAlphabet()));
+    },
+
+    generateAlphabet: function() {
+      var results = [];
+      for (var i=65; i<=90; i++){
+        results.push({
+          value: String.fromCharCode(i),
+          displayValue: String.fromCharCode(i)
+        });
+      }
+      return results;
     }
-    return l;
+
   };
 
-  buildSearchOptions();
+  ActorService.init({
+    optionsTemplate: $('#qOptionsTpl').html(),
+    optionsContainer: $('select#q')
+  });
+
 
 })();
