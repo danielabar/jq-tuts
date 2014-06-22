@@ -10,11 +10,11 @@
       this.searchElement = config.searchElement;
       this.resultsContainer = config.resultsContainer;
       this.resultsTemplate = config.resultsTemplate;
+
       this.resultsContainer.hide();
       this.initSearchOptions();
-      this.registerSearchHandler();
+      this.registerSearchHandlers();
 
-      //test
       $('#actorDetailModal').on('hidden.bs.modal', function () {
         $('#actorDetailModal .detailContainer').empty();
       });
@@ -36,12 +36,24 @@
       return results;
     },
 
+    registerSearchHandlers: function() {
+      this.registerSearchHandler();
+      this.registerOptionChangeHander();
+    },
+
     registerSearchHandler: function() {
       var self = this;
       this.searchElement.on('click', function(e) {
         var q = self.optionsContainer.val();
         self.searchByLastName(q, self);
         e.preventDefault();
+      });
+    },
+
+    registerOptionChangeHander: function() {
+      var self = this;
+      this.optionsContainer.on('change', function() {
+        self.searchByLastName(this.value, self);
       });
     },
 
