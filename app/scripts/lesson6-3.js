@@ -13,6 +13,11 @@
       this.resultsContainer.hide();
       this.initSearchOptions();
       this.registerSearchHandler();
+
+      //test
+      $('#actorDetailModal').on('hidden.bs.modal', function (e) {
+        $('#actorDetailModal .detailContainer').empty();
+      });
     },
 
     initSearchOptions: function() {
