@@ -13,11 +13,7 @@
 
       this.resultsContainer.hide();
       this.initSearchOptions();
-      this.registerSearchHandlers();
-
-      $('#actorDetailModal').on('hidden.bs.modal', function () {
-        $('#actorDetailModal .detailContainer').empty();
-      });
+      this.registerHandlers();
     },
 
     initSearchOptions: function() {
@@ -36,16 +32,22 @@
       return results;
     },
 
-    registerSearchHandlers: function() {
+    registerHandlers: function() {
       this.registerSearchHandler();
       this.registerOptionChangeHander();
+      this.registerModal();
+    },
+
+    registerModal: function() {
+      $('#actorDetailModal').on('hidden.bs.modal', function () {
+        $('#actorDetailModal .detailContainer').empty();
+      });
     },
 
     registerSearchHandler: function() {
       var self = this;
       this.searchElement.on('click', function(e) {
-        $('#searchError').addClass('hidden');
-        self.resultsContainer.empty();
+        self.cleanUp(self);
         var q = self.optionsContainer.val();
         self.searchByLastName(q, self);
         e.preventDefault();
@@ -55,10 +57,14 @@
     registerOptionChangeHander: function() {
       var self = this;
       this.optionsContainer.on('change', function() {
-        $('#searchError').addClass('hidden');
-        self.resultsContainer.empty();
+        self.cleanUp(self);
         self.searchByLastName(this.value, self);
       });
+    },
+
+    cleanUp: function(self) {
+      $('#searchError').addClass('hidden');
+      self.resultsContainer.empty();
     },
 
     searchByLastName: function(q, self) {
