@@ -44,6 +44,8 @@
     registerSearchHandler: function() {
       var self = this;
       this.searchElement.on('click', function(e) {
+        $('#searchError').addClass('hidden');
+        self.resultsContainer.empty();
         var q = self.optionsContainer.val();
         self.searchByLastName(q, self);
         e.preventDefault();
@@ -53,6 +55,8 @@
     registerOptionChangeHander: function() {
       var self = this;
       this.optionsContainer.on('change', function() {
+        $('#searchError').addClass('hidden');
+        self.resultsContainer.empty();
         self.searchByLastName(this.value, self);
       });
     },
@@ -65,8 +69,8 @@
         success: function(data) {
           self.displaySearchResults(data, self);
         },
-        error: function(error) {
-          self.displayError(error);
+        error: function(jqXHR) {
+          self.displayError(jqXHR);
         }
       });
     },
@@ -79,8 +83,12 @@
       self.registerActorDetailModalHandler();
     },
 
-    displayError: function(error) {
-      console.log(error);
+    displayError: function(jqXHR) {
+      var serverError = JSON.parse(jqXHR.responseText);
+      var errorMessage = serverError.message;
+      console.dir(errorMessage);
+      $('.searchErrorText').text(errorMessage);
+      $('#searchError').removeClass('hidden');
     },
 
     registerActorDetailModalHandler: function() {

@@ -51,6 +51,9 @@ app.get('/actor/:firstLetterOfLastName', function(req, res) {
   var q = validator.escape(req.params.firstLetterOfLastName) + '%';
   connection.query('SELECT actor_id, first_name, last_name FROM actor WHERE last_name LIKE ? ORDER BY last_name', [q], function(err, results) {
     if (err) res.send(500, err);
+    if (results && results.length === 0) {
+      res.send(404, {message: 'No actors found'});
+    }
     var resultsWithLink = results.map(function(item) {
       return _.extend(item, {link: '/actordetail/' + item.actor_id});
     });
