@@ -1,0 +1,7 @@
+.box {
+  width: 188px;
+  height: 188px;
+  background: green;
+  display: inline-block;
+  margin-right: 3em;
+}
