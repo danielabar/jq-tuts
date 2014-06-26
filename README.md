@@ -51,3 +51,19 @@ http://content.guardianapis.com/search?q=fifa&show-fields=thumbnail
   * get
   * post
   * getScript
+
+### Lesson 7-1 Plugin Development
+* careful with '$', project in which plugin is being used could have $ meaning something other than jQuery
+* good practice to wrap plugin in self executing function and pass it jquery
+* another good practice is to create local scope for window and document
+  * slight performance improvement if plugin code references window and document often
+  * can get smaller size on minification because window and document references can be modified
+* final precaution is to pass undefined, just in case plugin is used in a projecct where someone assigned 'undefined' to something
+
+  ```javascript
+  (function($, window, document, undefined) {
+    $.fn.myPlugin = function() {
+      // my plugin code here
+    };
+  })(jQuery, window, document);
+  ```
