@@ -2,6 +2,12 @@
 
 (function() {
 
-  $('div.news').searchGuardian();
+  // string usage
+  // $('div.news').searchGuardian('dogs');
+
+  // options usage
+  $('div.news').searchGuardian({
+    search: 'dogs'
+  });
 
 })();

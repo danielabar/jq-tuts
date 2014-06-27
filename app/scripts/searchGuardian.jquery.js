@@ -19,6 +19,56 @@
       var self = this;
       self.elem = elem;
       self.$elem = $(elem);
+      self.url = 'http://content.guardianapis.com/search?show-fields=all';
+
+      // support user passing string or object as option
+      if (typeof options === 'string') {
+        self.search = options;
+      } else {
+        // object was passed
+        self.search = options.search;
+        // allow user to override plugin default options
+        self.options = $.extend({}, $.fn.searchGuardian.options, options);
+      }
+      self.cycle();
+    },
+
+    cycle: function() {
+      var self = this;
+      self.fetch().done(function(data) {
+        self.buildFrag(data);
+        self.display();
+      });
+    },
+
+    fetch: function() {
+      var self = this;
+      return $.ajax({
+        url: self.url,
+        dataType: 'jsonp',
+        data: {q: self.search},
+      }).promise();
+    },
+
+    buildFrag: function(data) {
+      var self = this;
+      self.news = $.map(data.response.results, self.buildNewsItem);
+      console.log(self.news);
+    },
+
+    buildNewsItem: function(item) {
+      return {
+        author: item.fields.byline,
+        content: item.fields.trailText,
+        thumbnail: item.fields.thumbnail,
+        url: item.webUrl,
+        title: item.webTitle,
+        publishDate: item.webPublicationDate
+      };
+    },
+
+    display: function() {
+      this.$elem.html( this.news ); // that's available??
     }
 
   };
@@ -41,8 +91,9 @@
     });
   };
 
+  // Defaults
   $.fn.searchGuardian.options = {
-
+    search: 'cats'
   };
 
 })(jQuery, window, document);
