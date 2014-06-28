@@ -28,17 +28,22 @@
       self.options = $.extend({}, $.fn.searchGuardian.options, options);
 
       // kick everything off
-      self.cycle();
+      self.refresh(1);
     },
 
-    cycle: function() {
+    refresh: function(length) {
       var self = this;
-      self.fetch().done(function(data) {
-        var limitData = self.applyLimit(data.response.results, self.options.limit);
-        self.buildFrag(limitData);
-        self.display();
-        self.options.onComplete();
-      });
+      setTimeout(function() {
+        self.fetch().done(function(data) {
+          var limitData = self.applyLimit(data.response.results, self.options.limit);
+          self.buildFrag(limitData);
+          self.display();
+          self.options.onComplete.apply(self.elem, arguments);
+          if (self.options.refresh) {
+            self.refresh();
+          }
+        });
+      }, length || self.options.refresh);
     },
 
     fetch: function() {
@@ -72,7 +77,14 @@
     },
 
     display: function() {
-      this.$elem.html( this.news );
+      var self = this;
+      if (self.options.transition === 'none' || !self.options.transition) {
+        self.$elem.html( self.news );
+      } else {
+        self.$elem[self.options.transition]('500', function() {
+          $(this).html(self.news)[self.options.transition](500);
+        });
+      }
     },
 
     applyLimit: function(obj, count) {
@@ -96,6 +108,8 @@
       //    therefore need a polyfill for older browsers
       var guardian = Object.create(Guardian);
       guardian.init(options, this);
+      // save the instance on data in case caller wants it
+      $.data(this, 'searchGuardian', guardian);
     });
   };
 
@@ -104,7 +118,9 @@
     search: 'cats',
     wrapEachWith: '<li></li>',
     limit: 10,
-    onComplete: function() {}
+    onComplete: function() {},
+    refresh: null,
+    transition: 'fadeToggle'
   };
 
 })(jQuery, window, document);
