@@ -22,22 +22,22 @@
       self.url = 'http://content.guardianapis.com/search?show-fields=all';
 
       // support user passing string or object as option
-      if (typeof options === 'string') {
-        self.search = options;
-      } else {
-        // object was passed
-        self.search = options.search;
-        // allow user to override plugin default options
-        self.options = $.extend({}, $.fn.searchGuardian.options, options);
-      }
+      self.search = (typeof options === 'string') ? options : options.search;
+
+      // allow user to override plugin default options
+      self.options = $.extend({}, $.fn.searchGuardian.options, options);
+
+      // kick everything off
       self.cycle();
     },
 
     cycle: function() {
       var self = this;
       self.fetch().done(function(data) {
-        self.buildFrag(data);
+        var limitData = self.applyLimit(data.response.results, self.options.limit);
+        self.buildFrag(limitData);
         self.display();
+        self.options.onComplete();
       });
     },
 
@@ -46,14 +46,18 @@
       return $.ajax({
         url: self.url,
         dataType: 'jsonp',
-        data: {q: self.search},
+        data: {
+          q: self.search
+        }
       }).promise();
     },
 
     buildFrag: function(data) {
       var self = this;
-      self.news = $.map(data.response.results, self.buildNewsItem);
-      console.log(self.news);
+      var newsList = $.map(data, self.buildNewsItem);
+      self.news = $.map(newsList, function(obj) {
+        return $(self.options.wrapEachWith).append(obj.content);
+      });
     },
 
     buildNewsItem: function(item) {
@@ -68,7 +72,11 @@
     },
 
     display: function() {
-      this.$elem.html( this.news ); // that's available??
+      this.$elem.html( this.news );
+    },
+
+    applyLimit: function(obj, count) {
+      return obj.slice(0, count);
     }
 
   };
@@ -93,15 +101,10 @@
 
   // Defaults
   $.fn.searchGuardian.options = {
-    search: 'cats'
+    search: 'cats',
+    wrapEachWith: '<li></li>',
+    limit: 10,
+    onComplete: function() {}
   };
 
 })(jQuery, window, document);
-
-  // var getNews = function(search) {
-  //   return $.ajax({
-  //     url: 'http://content.guardianapis.com/search?show-fields=all',
-  //     dataType: 'jsonp',
-  //     data: {q: search},
-  //   });
-  // };

@@ -3,11 +3,15 @@
 (function() {
 
   // string usage
-  // $('div.news').searchGuardian('dogs');
+  $('div.newsString').searchGuardian('strawberry');
 
   // options usage
-  $('div.news').searchGuardian({
-    search: 'dogs'
+  $('div.newsOption').searchGuardian({
+    search: 'Syria',
+    limit: 5,
+    onComplete: function() {
+      console.log('client callback');
+    }
   });
 
 })();
